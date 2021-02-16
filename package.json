@@ -1,0 +1,17 @@
+{
+  "name": "hyzer",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "@gridsome/source-airtable": "^0.2.0",
+    "@gridsome/source-strapi": "^0.2.0",
+    "gridsome": "^0.7.0",
+    "node-sass": "^5.0.0",
+    "slugify": "^1.4.6",
+    "velocity-animate": "^2.0.6"
+  }
+}

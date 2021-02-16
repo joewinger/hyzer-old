@@ -1,0 +1,33 @@
+body {
+	background: var(--bg-color);
+	color: var(--text-color);
+	
+	font-family: 'Inter', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+	line-height: 1.5;
+}
+
+hr {
+	border: none;
+	border-top: dotted 1px #42554E;
+	height: 5px;
+	width: 100%;
+	margin: 50px 0 30px;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Rubik', sans-serif;
+	font-weight: 500;
+}
+h1, h2 {
+	margin: 5px 0px 10px 0px;
+}
+h1 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+h2 {
+	font-size: 1.2rem;
+	font-weight: 500;
+}

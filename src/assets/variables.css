@@ -1,0 +1,25 @@
+:root {
+	--content-max-width: 450px;
+
+	--bg-color: #FFFFFF;
+	--text-color: #000000;
+
+	--beta-chip-color: hsl(180, 50%, 50%);
+
+	--stat-bar-speed-bg: hsl(50, 90%, 95%);
+	--stat-bar-speed-fg: hsl(50, 90%, 85%);
+	--stat-bar-glide-bg: hsl(36, 100%, 96%);
+	--stat-bar-glide-fg: hsl(36, 90%, 90%);
+	--stat-bar-turn-bg: hsl(180, 45%, 95%);
+	--stat-bar-turn-fg: hsl(180, 40%, 90%);
+	--stat-bar-fade-bg: hsl(240, 65%, 97%);
+	--stat-bar-fade-fg: hsl(240, 50%, 92%);
+	--stat-bar-stability-bg: hsl(97, 60%, 95%);
+	--stat-bar-stability-fg: hsl(97, 50%, 88%);
+
+	--disc-type-chip-color: hsl(180, 40%, 90%);
+
+	--footer-font: 'Rubik', 'Inter', sans-serif;
+	--footer-bg: #212121;
+	--footer-text-color: hsl(0, 0%, 90%);
+}
