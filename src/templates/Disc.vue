@@ -1,6 +1,6 @@
 <template>
 	<Layout>
-		<img id="hero" :src="$page.disc.img_url || 'https://via.placeholder.com/300?text=300x300'" />
+		<img id="hero" :src="$page.disc.img_url || 'https://via.placeholder.com/300?text=Coming+Soon'" />
 		<!-- <img id="hero" src="https://cdn.shopify.com/s/files/1/0063/8389/4580/products/INCE-Thunderbird-2X_zpsmrdypvsq_1400x.jpg?v=1571748402" /> -->
 
 		<div id="title">
