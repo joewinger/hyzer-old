@@ -64,7 +64,6 @@ query {
 </script>
 
 <script>
-import 'velocity-animate/velocity.ui.min.js';
 
 export default {
 	metaInfo: {
