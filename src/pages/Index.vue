@@ -84,7 +84,7 @@ export default {
 
 <style scoped>
 #about {
-	margin-bottom: 40px;
+	margin: 35px 0;
 	border-radius: 15px;
 }
 
