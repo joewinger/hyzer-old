@@ -111,17 +111,18 @@ export default {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 10px;
 }
 
 .result {
-	margin-bottom: 10px;
-
 	border-radius: 7px;
 	box-shadow:
 		0 0 0 1px rgba( 56, 60, 79, 0.23),
 		0 2px 4px rgba(20, 40, 60, 0.3),
 		0 5px 15px -10px rgba( 36, 38, 50, 0.25);
-
+		
 	transition: all 1s;
 }
 .result > a {
