@@ -20,7 +20,10 @@ export default {
 
 <style>
 #flightPath {
-	margin: 10px auto 0 auto;
+	margin-top: 10px;
+	padding: 0;
+	margin: auto;
+	display: block;
 	width: 300px;
 	border-radius: 15px;
 }
