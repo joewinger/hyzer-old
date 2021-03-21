@@ -76,7 +76,7 @@ export default {
 	},
 	computed: {
 		filteredDiscs: function() {
-			return this.$page.discs.edges.filter(disc => !disc.node.name.indexOf(this.query));
+			return this.$page.discs.edges.filter(disc => !disc.node.name.toLowerCase().indexOf(this.query.toLowerCase()));
 		}
 	}
 }
