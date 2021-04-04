@@ -1,7 +1,6 @@
 <template>
 	<Layout>
 		<g-image id="hero" src="~/assets/coming-soon.png" />
-		<!-- <img id="hero" src="https://cdn.shopify.com/s/files/1/0063/8389/4580/products/INCE-Thunderbird-2X_zpsmrdypvsq_1400x.jpg?v=1571748402" /> -->
 
 		<div id="title">
 			<h1 id="name" v-html="$page.disc.name" />
