@@ -83,9 +83,6 @@ export default {
 		return {
 			title: this.$page.disc.name
 		}
-	},
-	mounted() {
-		console.log(this.$page.disc);
 	}
 }
 </script>
