@@ -23,20 +23,23 @@
 			lsf: $page.disc.lsf
 		}" />
 
-		<hr />
+		<section id='section-flight-path' v-if="$page.disc.distance !== null">
+			<hr />
 
-		<h2>Flight Path</h2>
-		<flight-path :options="{
-			distance: $page.disc.distance,
-			hst: $page.disc.hst,
-			lsf: $page.disc.lsf,
-			armspeed: 1,
-		}" />
+			<h2>Flight Path</h2>
+			<flight-path :options="{
+				distance: $page.disc.distance,
+				hst: $page.disc.hst,
+				lsf: $page.disc.lsf,
+				armspeed: 1,
+			}" />
+		</section>
+		<section id="section-plastics" v-if="$page.disc.plastics.length !== 0">
+			<hr />
 
-		<hr v-if="$page.disc.plastics.length !== 0" />
-
-		<h2 v-if="$page.disc.plastics.length !== 0">Available Plastics</h2>
-		<available-plastics :availablePlastics="$page.disc.plastics" />
+			<h2>Available Plastics</h2>
+			<available-plastics :availablePlastics="$page.disc.plastics" />
+		</section>
 	</Layout>
 </template>
 
