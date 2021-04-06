@@ -151,6 +151,7 @@ export default {
 
 	border-radius: 15px;
 	background: rgba(180, 190, 200, 0.4);
+	box-shadow: 0 0 0 1px rgba(122, 130, 138, 0.4);
 
 	list-style: none;
 }
@@ -161,6 +162,8 @@ export default {
 }
 .sort-option.active {
 	background: rgba(180, 190, 200, 0.8);
+	box-shadow: 0 0 0 1px rgba(56, 60, 79, 0.3);
+
 }
 
 #resultList {
