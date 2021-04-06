@@ -1,7 +1,5 @@
 <template>
 	<Layout>
-		<!-- <img src="@/logo.svg" alt=""> -->
-
 		<div id="about">
 			<p>Hyzer is the one-stop shop for disc research and discovery.</p>
 			<p>Our goal is to make a product that people love, so please feel free to give us feedback and suggestions :)</p>
