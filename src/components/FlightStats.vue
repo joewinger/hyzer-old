@@ -22,7 +22,7 @@
 		
 		<div class='flightStability'>
 			<label>Stability</label>
-			<progress-bar :min=-100 :max=100 :value=stabiliy suffix="%" :backgroundColor="'var(--stat-bar-stability-bg)'" :foregroundColor="'var(--stat-bar-stability-fg)'" />
+			<progress-bar :min=-100 :max=100 :value=stats.stability suffix="%" :backgroundColor="'var(--stat-bar-stability-bg)'" :foregroundColor="'var(--stat-bar-stability-fg)'" />
 			<ol class='labels'>
 				<li>Understable</li>
 				<li>Overstable</li>
@@ -39,9 +39,6 @@ export default {
 	name: 'FlightStats',
 	props: {
 		'stats': Object
-	},
-	computed: {
-		stabiliy() { return  this.stats.lsf + this.stats.hst; }
 	}
 }
 </script>

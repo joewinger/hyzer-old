@@ -19,8 +19,7 @@
 			glide: $page.disc.glide,
 			turn: $page.disc.turn,
 			fade: $page.disc.fade,
-			hst: $page.disc.hst,
-			lsf: $page.disc.lsf
+			stability: $page.disc.stability
 		}" />
 
 		<section id='section-flight-path' v-if="$page.disc.distance !== null">
@@ -59,6 +58,7 @@ query ($id: ID!) {
 		distance
 		hst
 		lsf
+		stability
 		plastics {
 			name
 			description
