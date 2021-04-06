@@ -10,8 +10,7 @@
 		<ul id="resultList">
 			<li v-for="disc in filteredDiscs" :key="disc.node.id" class="result">
 				<g-link :to="`/disc/${disc.node.slug}/`">
-					<span class="name">{{ disc.node.name }}</span>
-					<span class="manufacturer">{{ disc.node.manufacturer.name }}</span>
+					<disc-link :disc="disc.node" />
 				</g-link>
 			</li>
 			<div class="noresults" v-if="filteredDiscs.length === 0">
@@ -35,6 +34,11 @@ query Discs {
 				manufacturer {
 					name
 				}
+				speed
+				glide
+				turn
+				fade
+				stability
 			}
 		}
 	}
@@ -42,6 +46,7 @@ query Discs {
 </page-query>
 
 <script>/*
+import DiscLink from '../components/DiscLink.vue';
 <page-query>
 query {
 	discs: allStrapiDiscs {
@@ -62,8 +67,10 @@ query {
 </script>
 
 <script>
+import DiscLink from '~/components/DiscLink.vue'
 
 export default {
+	components: { DiscLink },
 	metaInfo: {
 		title: 'Home'
 	},
@@ -114,32 +121,9 @@ export default {
 	grid-gap: 10px;
 }
 
-.result {
-	border-radius: 7px;
-	box-shadow:
-		0 0 0 1px rgba( 56, 60, 79, 0.23),
-		0 2px 4px rgba(20, 40, 60, 0.3),
-		0 5px 15px -10px rgba( 36, 38, 50, 0.25);
-		
-	transition: all 1s;
-}
-.result > a {
-	display: flex;
-	justify-content: space-between;
-
-	box-sizing: border-box;
-	width: 100%;
-	padding: 20px;
-
+.result a {
+	color: var(--text-color);
 	text-decoration: none;
-	color: var(--text-color) !important;
-
-	cursor: pointer;
-}
-.result > a > .manufacturer {
-	font-size: 0.9em;
-	opacity: 0.8;
-	font-style: italic;
 }
 
 .noresults {
