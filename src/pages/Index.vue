@@ -6,7 +6,14 @@
 		</div>
 		
 		<input type="text" name="search" id="search" v-model="query" placeholder="Search for a disc">
-		<h1>Discs</h1>
+		<div style="display: flex; justify-content: space-between; align-items: center;">
+			<h1>Discs</h1>
+			<ul class="sort-options">
+				<li class="sort-option" :class="{ active: sortmode==='alphabetical' }" @click="sortmode='alphabetical'">Name</li>
+				<li class="sort-option" :class="{ active: sortmode==='stability_dec' }" @click="sortmode='stability_dec'">Stability</li>
+				<li class="sort-option" :class="{ active: sortmode==='manufacturer' }" @click="sortmode='manufacturer'">Manufacturer</li>
+			</ul>
+		</div>
 		<ul id="resultList">
 			<li v-for="disc in filteredDiscs" :key="disc.node.id" class="result">
 				<g-link :to="`/disc/${disc.node.slug}/`">
@@ -76,12 +83,33 @@ export default {
 	},
 	data: function() {
 		return {
-			query: ''
+			query: '',
+			sortmode: 'manufacturer'
 		}
 	},
 	computed: {
 		filteredDiscs: function() {
-			return this.$page.discs.edges.filter(disc => !disc.node.name.toLowerCase().indexOf(this.query.toLowerCase()));
+			let discs = this.$page.discs.edges.filter(disc => !disc.node.name.toLowerCase().indexOf(this.query.toLowerCase())).sort((a, b) => {
+				if (this.sortmode === 'alphabetical' || this.sortmode === 'manufacturer') {
+					if (a.node.name.toLowerCase() < b.node.name.toLowerCase()) {
+						return -1;
+					} else {
+						return 1;
+					}
+				}
+				if (this.sortmode === 'stability_dec') return b.node.stability - a.node.stability
+				if (this.sortmode === 'stability_asc') return a.node.stability - b.node.stability
+			});
+			if (this.sortmode ==='manufacturer') { // We split it up like this so it sorts by alphabet first
+				discs.sort((a, b) => {
+					if (a.node.manufacturer.name.toLowerCase() < b.node.manufacturer.name.toLowerCase()) {
+						return -1;
+					} else {
+						return 1;
+					}
+				})
+			}
+			return discs;
 		}
 	}
 }
@@ -110,6 +138,29 @@ export default {
 #search:focus {
 	outline: 0;
 	box-shadow: 0 0 0 1px rgba(56, 60, 79, 0.4);
+}
+
+.sort-options {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	font-size: 0.65em;
+	width: auto;
+	padding: 0;
+
+	border-radius: 15px;
+	background: rgba(180, 190, 200, 0.4);
+
+	list-style: none;
+}
+.sort-option {
+	display: inline-block;
+	border-radius: 15px;
+	padding: 5px 8px;
+}
+.sort-option.active {
+	background: rgba(180, 190, 200, 0.8);
 }
 
 #resultList {
