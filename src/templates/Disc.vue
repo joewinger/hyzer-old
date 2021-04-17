@@ -115,10 +115,11 @@ img#hero {
 	font-family: 'Rubik', sans-serif;
 	font-size: 3rem;
 	font-weight: 700;
+	line-height: 1.0;
 }
 
 #title > #manufacturer {
-	margin: -18px 0 0 2px; /* 2px on the left looks more normal when the disc name starts with a T or something where the decender isn't on the left */
+	margin: -6px 0 0 2px; /* 2px on the left looks more normal when the disc name starts with a T or something where the decender isn't on the left */
 
 	font-family: 'Rubik', sans-serif;
 	font-weight: 200;
