@@ -1,5 +1,10 @@
 :root {
 	--content-max-width: 450px;
+	--nav-height: 50px;
+	--results-drawer-height: 300px;
+	--result-height: 40px;
+
+	--header-bg-color: #FFFFFF;
 
 	--bg-color: #FFFFFF;
 	--text-color: #000000;
