@@ -28,3 +28,8 @@
 	--footer-bg: #212121;
 	--footer-text-color: hsl(0, 0%, 90%);
 }
+@media screen and (max-width: 450px) {
+	:root {
+		--content-max-width: 100%;
+	}
+}
