@@ -1,7 +1,8 @@
 :root {
 	--content-max-width: 450px;
 	--nav-height: 50px;
-	--results-drawer-height: 300px;
+	--results-drawer-min-height: calc(var(--result-height) * 4);
+	--results-drawer-max-height: calc(var(--result-height) * 9);
 	--result-height: 40px;
 
 	--header-bg-color: #FFFFFF;
