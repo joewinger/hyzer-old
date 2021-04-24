@@ -232,7 +232,7 @@ export default {
 .drawer {
   width: var(--content-max-width);
   padding-top: 15px;
-  
+
   position: absolute;
   left: calc(50% - var(--content-max-width) / 2);
   z-index: 99;
@@ -246,7 +246,8 @@ export default {
   }
 }
 .results-drawer {
-  height: var(--results-drawer-height);
+  min-height: var(--results-drawer-min-height);
+  max-height: var(--results-drawer-max-height);
   overflow: scroll;
 
   /* box-shadow: 0px 0px 1000px 1000px rgba(56, 60, 79, 0.8); */
@@ -258,12 +259,12 @@ export default {
   padding: 0;
 }
 .results-drawer .result {
-  width: 100vw;
+  width: var(--content-max-width);
   height: var(--result-height);
 }
 .results-drawer .result a {
   position: relative;
-  width: 100vw;
+  width: var(--content-max-width);
   height: 100%;
   padding: 0 30px;
   box-sizing: border-box;
@@ -275,6 +276,11 @@ export default {
   
   color: var(--text-color);
   text-decoration: none;
+  border-bottom: dotted 1px rgba(56, 60, 79, 0.7);
+  border-radius: 10px;
+}
+.results-drawer .result a:hover {
+  background: rgba(0, 0, 0, 0.11);
 }
 .results-drawer .result a .name {
   font-weight: bold;
