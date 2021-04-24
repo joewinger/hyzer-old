@@ -231,12 +231,19 @@ export default {
 
 .drawer {
   width: var(--content-max-width);
-  position: absolute;
   padding-top: 15px;
-  background: var(--header-bg-color);
-  left: 0;
+  
+  position: absolute;
+  left: calc(50% - var(--content-max-width) / 2);
   z-index: 99;
+
+  background: var(--header-bg-color);
   box-shadow: 0 1px rgba(0, 0, 0, 0.11);
+}
+@media screen and (min-width: 450px) {
+  .drawer {
+    border-radius: 0 0 15px 15px;
+  }
 }
 .results-drawer {
   height: var(--results-drawer-height);
