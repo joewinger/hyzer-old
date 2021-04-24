@@ -2,10 +2,8 @@
 	<Layout>
 		<div id="about">
 			<p>Hyzer is the one-stop shop for disc research and discovery.</p>
-			<p>Our goal is to make a product that people love, so please feel free to give us feedback and suggestions :)</p>
 		</div>
-		
-		<input type="text" name="search" id="search" v-model="query" placeholder="Search for a disc">
+		<!-- <input type="text" name="search" id="search" v-model="query" placeholder="Search for a disc"> -->
 		<div style="display: flex; justify-content: space-between; align-items: center;">
 			<h1>Discs</h1>
 			<ul class="sort-options">
@@ -117,7 +115,7 @@ export default {
 
 <style scoped>
 #about {
-	margin: 35px 0;
+	margin: 35px 0 20px 0;
 	border-radius: 15px;
 }
 
