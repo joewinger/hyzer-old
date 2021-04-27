@@ -72,6 +72,5 @@ export default {
 .valuetext.tinybar {
 	position: absolute;
 	left: 5px;
-	border: solid salmon 1px;
 }
 </style>
