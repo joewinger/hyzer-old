@@ -159,8 +159,8 @@ export default {
 	padding: 5px 8px;
 }
 .sort-option.active {
-	background: rgba(180, 190, 200, 0.8);
-	box-shadow: 0 0 0 1px rgba(56, 60, 79, 0.3);
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 0 3px 0px rgba(56, 60, 79, 0.3);
 
 }
 

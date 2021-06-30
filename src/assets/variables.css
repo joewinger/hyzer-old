@@ -4,6 +4,8 @@
 	--results-drawer-min-height: calc(var(--result-height) * 4);
 	--results-drawer-max-height: calc(var(--result-height) * 9);
 	--result-height: 40px;
+	--account-drawer-height: 150px;
+	--account-drawer-profile-pic-padding: 20px;
 
 	--header-bg-color: #FFFFFF;
 

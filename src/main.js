@@ -4,11 +4,13 @@
 import DefaultLayout from '~/layouts/Default.vue'
 import '~/assets/global.css'
 import '~/assets/variables.css'
+import AuthPlugin from '~/plugins/auth'
 
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout);
-  
+
+  Vue.use(AuthPlugin);
 
   head.meta.push({
     name: 'viewport',

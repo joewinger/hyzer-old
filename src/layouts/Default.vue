@@ -12,7 +12,7 @@
           <!-- <g-link class="nav__link" to="/about/">About</g-link> -->
           <!-- <a class="feedback" href="https://form.typeform.com/to/Dpti2OAs?typeform-medium=embed-snippet" target="_blank">Feedback</a> -->
           <input type="search" name="search" class="search" v-model="query">
-          <div class="account"></div>
+          <div class="account" @click="currentDrawer = 'account'"></div>
         </nav>
       </div>
     </header>
@@ -32,6 +32,16 @@
             </g-link>
           </li>
         </ol>
+      </div>
+      <div class="drawer account-drawer" v-if="currentDrawer==='account'">
+        <img class="profilepic" v-if="isAuthenticated" :src="$auth.user.picture">
+        <img class="profilepic" v-else src="@/logo.svg" style="padding: 20px;">
+        <h1 class="name">{{ isAuthenticated ? $auth.user.name : 'Log In' }}</h1>
+        <ul class="links">
+          <li v-if="isAuthenticated"><a href="#">My Profile (soon)</a></li>
+          <li v-if="isAuthenticated"><a href="" @click="logout()">Log out</a></li>
+          <li v-if="!isAuthenticated"><a href="" @click="login()" class="btn">Log in or Sign up!</a></li>
+        </ul>
       </div>
     </div>
     <div class="content">
@@ -74,7 +84,16 @@ export default {
   data: function() {
     return {
       query: '',
-      currentDrawer: null
+      currentDrawer: null,
+      isAuthenticated: false
+    }
+  },
+  methods: {
+    login() {
+      this.$auth.login();
+    },
+    logout() {
+      this.$auth.logout();
     }
   },
   computed: {
@@ -84,6 +103,9 @@ export default {
 
       return this.$static.discs.edges.filter(disc => !disc.node.name.toLowerCase().indexOf(this.query.toLowerCase()));
     }
+  },
+  mounted() {
+    this.isAuthenticated = this.$auth.isAuthenticated();
   },
   watch: {
     query: function(val) {
@@ -217,7 +239,6 @@ export default {
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
-  background-color: #EEE;
 }
 
 .drawer-wrapper {
@@ -302,6 +323,50 @@ export default {
   align-items: center;
   width: 120px;
 }
+
+.account-drawer {
+  height: var(--account-drawer-height);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: var(--account-drawer-height) 1fr;
+  grid-template-rows: 50px 1fr;
+}
+
+.account-drawer .profilepic {
+  box-sizing: border-box;
+  width: calc(var(--account-drawer-height) - var(--account-drawer-profile-pic-padding)*2);
+  justify-self: center;
+  align-self: center;
+  border-radius: 40%;
+  grid-row: 1 / 3;
+  grid-column: 1;
+
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.account-drawer .name {
+  margin-top: calc(var(--account-drawer-profile-pic-padding) / 2);
+  grid-row: 1;
+  grid-column: 2;
+}
+.account-drawer .links {
+  grid-row: 2;
+  grid-column: 2;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.account-drawer .links a {
+  text-decoration: none;
+  color: inherit;
+}
+.account-drawer .links a.btn {
+  border: solid 1px black;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: auto;
+}
+
 .feedback {
   color: var(--text-color);
   border-bottom: dotted 1px var(--text-color);
