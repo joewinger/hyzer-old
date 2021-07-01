@@ -1,6 +1,8 @@
 import auth0 from 'auth0-js'
 import Vue from 'vue'
-import { domain, clientId } from '../../auth_config.json';
+// import { domain, clientId } from '../../auth_config.json';
+const domain = 'hyzer.us.auth0.com';
+const clientId = 'G1gEBV3V9CRTwIWxVfhSpJFUOdcB1qOQ';
 
 let siteUrl;
 try {
