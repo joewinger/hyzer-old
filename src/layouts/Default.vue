@@ -34,13 +34,13 @@
         </ol>
       </div>
       <div class="drawer account-drawer" v-if="currentDrawer==='account'">
-        <img class="profilepic" v-if="isAuthenticated" :src="$auth.user.picture">
+        <img class="profilepic" v-if="this.$auth.isAuthenticated()" :src="$auth.user.picture">
         <img class="profilepic" v-else src="@/logo.svg" style="padding: 20px;">
-        <h1 class="name">{{ isAuthenticated ? $auth.user.name : 'Log In' }}</h1>
+        <h1 class="name">{{ this.$auth.isAuthenticated() ? $auth.user.name : 'Log In' }}</h1>
         <ul class="links">
-          <li v-if="isAuthenticated"><a href="#">My Profile (soon)</a></li>
-          <li v-if="isAuthenticated"><a href="" @click="logout()">Log out</a></li>
-          <li v-if="!isAuthenticated"><a href="" @click="login()" class="btn">Log in or Sign up!</a></li>
+          <li v-if="this.$auth.isAuthenticated()"><a href="#">My Profile (soon)</a></li>
+          <li v-if="this.$auth.isAuthenticated()"><a href="" @click="logout()">Log out</a></li>
+          <li v-if="!this.$auth.isAuthenticated()"><a href="" @click="login()" class="btn">Log in or Sign up!</a></li>
         </ul>
       </div>
     </div>
@@ -84,8 +84,7 @@ export default {
   data: function() {
     return {
       query: '',
-      currentDrawer: null,
-      isAuthenticated: false
+      currentDrawer: null
     }
   },
   methods: {
@@ -103,9 +102,6 @@ export default {
 
       return this.$static.discs.edges.filter(disc => !disc.node.name.toLowerCase().indexOf(this.query.toLowerCase()));
     }
-  },
-  mounted() {
-    this.isAuthenticated = this.$auth.isAuthenticated();
   },
   watch: {
     query: function(val) {
