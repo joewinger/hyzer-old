@@ -7,9 +7,9 @@
 			<h2 id="manufacturer" v-html="$page.disc.manufacturer.name" />
 			<div id="type">{{ $page.disc.type }}</div>
 		</div>
-		<Description>
+		<description>
 			{{ $page.disc.description }}
-		</Description>
+		</description>
 
 		<hr />
 
