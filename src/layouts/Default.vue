@@ -38,7 +38,7 @@
         <img class="profilepic" v-else src="@/logo.svg" style="padding: 20px;">
         <h1 class="name">{{ this.$auth.isAuthenticated() ? $auth.user.name : 'Log In' }}</h1>
         <ul class="links">
-          <li v-if="this.$auth.isAuthenticated()"><a href="#">My Profile (soon)</a></li>
+          <li v-if="this.$auth.isAuthenticated()"><g-link to="/profile">Edit Profile</g-link></li>
           <li v-if="this.$auth.isAuthenticated()"><a href="" @click="logout()">Log out</a></li>
           <li v-if="!this.$auth.isAuthenticated()"><a href="" @click="login()" class="btn">Log in or Sign up!</a></li>
         </ul>
@@ -374,9 +374,11 @@ export default {
 }
 
 .content {
+  box-sizing: border-box;
   position: relative;
   background: var(--bg-color);
   max-width: var(--content-max-width);
+  width: 100vw;
   min-height: 65vh;
   padding: 0 2em;
   margin-top: 65px;
