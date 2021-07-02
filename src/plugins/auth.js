@@ -4,12 +4,15 @@ import Vue from 'vue'
 const domain = 'hyzer.us.auth0.com';
 const clientId = 'G1gEBV3V9CRTwIWxVfhSpJFUOdcB1qOQ';
 
-let siteUrl;
+
+let isBrowser;
 try {
-    siteUrl = window.location.origin;
+  isBrowser = typeof window !== 'undefined';
 } catch {
-    siteUrl = 'hyzer.us';
+  isBrowser = false;
 }
+
+let siteUrl = isBrowser ? window.location.origin : 'hyzer.us';
 
 // Source: https://github.com/bitcoinvsalts/gridsome-auth0-starter/blob/master/src/plugins/auth.js
 
@@ -26,7 +29,7 @@ let auth = new Vue({
   computed: {
     token: {
       get: () => {
-        return localStorage.getItem('id_token')
+        return isBrowser ? localStorage.getItem('id_token') : false
       },
       set: (id_token) => {
         localStorage.setItem('id_token', id_token)
@@ -34,7 +37,7 @@ let auth = new Vue({
     },
     accessToken: {
       get: () => {
-        return localStorage.getItem('access_token')
+        return isBrowser ? localStorage.getItem('access_token') : false
       },
       set: (accessToken) => {
         localStorage.setItem('access_token', accessToken)
@@ -42,7 +45,7 @@ let auth = new Vue({
     },
     expiresAt: {
       get: () => {
-        return localStorage.getItem('expires_at')
+        return isBrowser ? localStorage.getItem('expires_at') : false
       },
       set: (expiresIn) => {
         let expiresAt = JSON.stringify(expiresIn * 1000 + new Date().getTime())
@@ -51,7 +54,7 @@ let auth = new Vue({
     },
     user: {
       get: () => {
-        return JSON.parse(localStorage.getItem('user'))
+        return isBrowser ? JSON.parse(localStorage.getItem('user')) : false;
       },
       set: (user) => {
         localStorage.setItem('user', JSON.stringify(user))
@@ -75,7 +78,7 @@ let auth = new Vue({
       })
     },
     isAuthenticated() {
-      return new Date().getTime() < this.expiresAt && this.user
+      return isBrowser ? new Date().getTime() < this.expiresAt && this.user : false;
     },
     handleAuthentication() {
       return new Promise((resolve, reject) => {  
@@ -96,12 +99,7 @@ let auth = new Vue({
     }
   },
   async created() {
-		try {
-			if(typeof window !== 'undefined') this.handleAuthentication();
-		} catch (e) {
-			console.error("REEEEEEEE " + e);
-		}
-		// console.log("WORKING!")
+		if(isBrowser) this.handleAuthentication();
   }
 })
 
