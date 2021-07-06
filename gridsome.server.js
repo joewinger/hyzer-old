@@ -5,49 +5,78 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
-const slugify = require('slugify');
+const Airtable = require('airtable');
+const base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base(process.env.AIRTABLE_BASE_ID);
+const bodyParser = require('body-parser');
 
 module.exports = function (api) {
-	api.loadSource(({ addCollection }) => {
-		// Use the Data Store API here: https://gridsome.org/docs/data-store-api/
 
-		// const Blogs = require('./src/data/blogs.json');
+	api.configureServer(app => {
+		app.use(bodyParser.json());
+		app.post('/api/v0/submitReview', (req, res) => {
+			base('Reviews').create([
+				{
+					'fields': {
+						'user': req.body.user,
+						'disc': [
+							req.body.discId
+						],
+						'content': req.body.content,
+						'published': true,
+						'name': req.body.name
+					}
+				}
+			], function(err, records) {
+				if (err) {
+					console.error(err);
+					res.sendStatus(500).end();
+					return;
+				}
+				records.forEach((record) => {
+					console.log(`New review for ${record.getId()}`);
+				});
+				res.sendStatus(201).end();
+			});
+		});
+		app.post('/api/v0/updateReview', (req, res) => {
+			base('Reviews').update([
+				{
+					'id': req.body.reviewId,
+					'fields': {
+						'content': req.body.content
+					}
+				}
+			], function(err, records) {
+				if (err) {
+					console.error(err);
+					res.sendStatus(500).end();
+					return;
+				}
+				records.forEach((record) => {
+					console.log(`Review ${record.getId()} updated`);
+				});
+				res.sendStatus(201).end();
+			});
+		});
+		app.get('/api/v0/getReviews', (req, res) => {
+			base('Reviews').select({
+				filterByFormula: `AND(disc_id = '${req.query.discId}', published = TRUE())`,
+				fields: ['user', 'content', 'name', 'created_at', 'id'],
+				sort: [{ field: 'created_at', direction: 'desc'}]
+				// pageSize: 100
+			}).firstPage((err, records) => {
+				if (err) {
+					console.error(err);
+					res.sendStatus(500).end();
+					return;
+				}
+				let reviews = [];
+				records.forEach(record => {
+						reviews.push(record.fields);
+				});
 
-		// const collection = actions.addCollection({
-		//   typeName: 'BlogPosts'
-		// })
-	
-		// for (const blog of Blogs) {
-		//   collection.addNode(blog);
-		// }
-	})
-
-	api.createPages(async ({ createPage, graphql }) => {
-		
-		// const { data } = await graphql(`{
-		// 	discs: allStrapiDiscs {
-		// 		edges {
-		// 			disc: node {
-		// 				id
-		// 				slug
-		// 			}
-		// 		}
-		// 	}
-		// }`);
-
-		// console.log(JSON.stringify(data));
-
-		// const discs = data.discs.edges;
-
-		// discs.forEach(node => {
-		// 	createPage({
-		// 		path: `/disc/${node.disc.slug}`,
-		// 		component: './src/templates/Disc.vue',
-		// 		context: {
-		// 			id: node.disc.id
-		// 		}
-		// 	});
-		// });
-
+				res.send(reviews);
+			});
+		});
 	})
 }

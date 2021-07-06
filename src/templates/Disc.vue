@@ -33,11 +33,19 @@
 				armspeed: 1,
 			}" />
 		</section>
+
 		<section id="section-plastics" v-if="$page.disc.plastics.length !== 0">
 			<hr />
 
 			<h2>Available Plastics</h2>
-			<available-plastics :availablePlastics="$page.disc.plastics" />
+			<available-plastics :available-plastics="$page.disc.plastics" />
+		</section>
+		
+		<section id="section-reviews">
+			<hr />
+
+			<h2>Reviews ({{ numReviews }})</h2>
+			<reviews :disc-id="$page.disc.id" @update-review-count="updateReviewCount"/>
 		</section>
 	</Layout>
 </template>
@@ -45,6 +53,7 @@
 <page-query>
 query ($id: ID!) {
 	disc(id: $id) {
+		id
 		name
 		manufacturer {
 			name
@@ -73,17 +82,29 @@ import Description from '~/components/Description.vue';
 import FlightStats from '~/components/FlightStats.vue';
 import AvailablePlastics from '~/components/AvailablePlastics.vue';
 import FlightPath from '~/components/FlightPath.vue';
+import Reviews from '~/components/Reviews.vue';
 
 export default {
 	components: {
 		Description,
 		FlightStats,
 		FlightPath,
-		AvailablePlastics
+		AvailablePlastics,
+		Reviews
 	},
 	metaInfo() {
 		return {
 			title: this.$page.disc.name
+		}
+	},
+	data() {
+		return {
+			numReviews: 0
+		}
+	},
+	methods: {
+		updateReviewCount: function(e) {
+			this.numReviews = e
 		}
 	}
 }

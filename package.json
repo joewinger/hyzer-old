@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "@gridsome/source-airtable": "^0.2.0",
+    "airtable": "^0.11.1",
     "auth0-js": "^9.13.2",
+    "body-parser": "^1.19.0",
     "gridsome": "^0.7.0",
     "node-sass": "^5.0.0",
     "slugify": "^1.4.6"

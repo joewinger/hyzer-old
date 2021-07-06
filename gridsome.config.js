@@ -10,16 +10,16 @@ module.exports = {
 		{
 			use: '@gridsome/source-airtable',
 			options: {
-				apiKey: process.env.AIRTABLE_API_KEY, // required
-				base: process.env.AIRTABLE_BASE_ID, // required
+				apiKey: process.env.AIRTABLE_API_KEY,
+				base: process.env.AIRTABLE_BASE_ID,
 				tables: [
 					{
-						name: 'Discs', // required
-						typeName: 'Disc', // required
+						name: 'Discs',
+						typeName: 'Disc',
 						select: {
 							filterByFormula: '{published} = TRUE()'
-						}, // optional,
-						links: [ // optional
+						},
+						links: [ // Link related fields together
 							{
 								fieldName: 'manufacturer',
 								typeName: 'Manufacturer',
@@ -28,17 +28,28 @@ module.exports = {
 							{
 								fieldName: 'plastics',
 								typeName: 'Plastic'
+							},
+							{
+								fieldName: 'reviews',
+								typeName: 'Review'
 							}
 						]
 					},
 					{
-							name: 'Manufacturers',
-							typeName: 'Manufacturer',
+						name: 'Manufacturers',
+						typeName: 'Manufacturer',
 					},
 					{
-							name: 'Plastics',
-							typeName: 'Plastic',
+						name: 'Plastics',
+						typeName: 'Plastic',
 					},
+					{
+						name: 'Reviews',
+						typeName: 'Review',
+						select: {
+							filterByFormula: '{published} = TRUE()'
+						},
+					}
 				]
 			},
 		},
