@@ -11,7 +11,7 @@
         <nav class="nav-right">
           <!-- <g-link class="nav__link" to="/about/">About</g-link> -->
           <!-- <a class="feedback" href="https://form.typeform.com/to/Dpti2OAs?typeform-medium=embed-snippet" target="_blank">Feedback</a> -->
-          <input type="search" name="search" class="search" v-model="query">
+          <input type="search" name="search" class="search" @focus="query=''" v-model="query">
           <div class="account" @click="currentDrawer = 'account'"></div>
         </nav>
       </div>
