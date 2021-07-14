@@ -93,7 +93,7 @@ export default {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					discId: this.discId,
+					disc: this.discId,
 					content: this.newReviewContent,
 					name: JSON.parse(localStorage.user).name,
 					user: JSON.parse(localStorage.user).sub
@@ -125,7 +125,7 @@ export default {
 			});
 		},
 		getReviews: async function() {
-			let response = await fetch('/api/v0/getReviews?' + new URLSearchParams({ discId: this.discId }))
+			let response = await fetch('/api/v0/getReviews?' + new URLSearchParams({ disc: this.discId }))
 			if(!response.ok) { console.error(response); return; }
 			
 			let reviews = await response.json();
