@@ -7,3 +7,4 @@ dist
 .env
 .env.*
 auth_config.json
+.vercel
