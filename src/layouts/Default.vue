@@ -113,7 +113,6 @@ export default {
 </script>
 
 <style>
-
 .layout {
   width: 100%;
   display: flex;
@@ -385,7 +384,6 @@ export default {
   margin-bottom: 150px;
   padding-bottom: 30px;
   z-index: 10;
-  box-shadow: 0 0 5px var(--bg-color);
 }
 
 .footer {
