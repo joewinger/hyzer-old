@@ -1,5 +1,5 @@
 <template>
-	<canvas id="flightPath" width=300 height=500></canvas>
+	<canvas id="flightPath" width=300 :height="options.distance+100"></canvas>
 </template>
 
 <script>
