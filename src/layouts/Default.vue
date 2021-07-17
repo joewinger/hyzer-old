@@ -114,11 +114,12 @@ export default {
 
 <style>
 .layout {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
 }
 
 .header {
@@ -127,26 +128,27 @@ export default {
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 100;
-
-  background: var(--header-bg-color);
 
   width: 100%;
-  box-sizing: border-box;
   height: 50px;
   padding: 5px 2em;
+  box-sizing: border-box;
 
+  background: var(--header-bg-color);
   box-shadow: 0 1px rgba(0, 0, 0, 0.11);
 
   font-size: 0.9rem;
+
+  z-index: 100;
 }
 
 .nav-content {
-  width: 100%;
-  max-width: var(--content-max-width);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+  width: 100%;
+  max-width: var(--content-max-width);
 }
 
 .nav-left, .nav-right {
@@ -161,63 +163,67 @@ export default {
 }
 
 .logo {
+  align-self: start;
+  
+  height: 60px;
+  margin-top: 25px;
+  padding: 3px;
+  padding-top: 0;
+
+  background: #FFF;
+  border-radius: 100px;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.11);
+
   font-family: 'Inter', sans-serif;
   font-weight: 800;
   text-decoration: none;
   font-style: normal;
   font-size: 2.5rem;
   color: var(--text-color);
-
-  height: 60px;
-
-  margin-top: 25px;
-  align-self: start;
-  background: #FFF;
-  border-radius: 100px;
-  padding: 3px;
-  padding-top: 0;
-  box-shadow: 0 1px rgba(0, 0, 0, 0.11);
 }
 
 .beta {
-  font-size: 0.8rem;
-  color: var(--beta-chip-color);
   padding: 0 5px;
+  margin-left: 5px;
+
   border-radius: 4px;
   border: solid 1px var(--beta-chip-color);
   box-shadow: 0 0 2px var(--beta-chip-color),
         inset 0 0 2px var(--beta-chip-color);
   
-  margin-left: 5px;
+  font-size: 0.8rem;
+  color: var(--beta-chip-color); 
 }
 
 .search {
   width: 32px;
   height: 32px;
+  margin-right: 5px;
+
 	box-sizing: border-box;
 	border: solid 1px rgba(56, 60, 79, 0.3);
 	border-radius: 10000px;
 
-  margin-right: 5px;
-
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-
-	font-size: 0.9rem;
-  transition: width 0.3s ease-out;
   background-image: url('../../src/assets/search.svg');
   background-size: 18px;
   background-repeat: no-repeat;
   background-position-x: 6px;
   background-position-y: center;
+
+	font-size: 0.9rem;
   color: transparent;
+
+  transition: width 0.3s ease-out;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
 }
 .search:focus {
   width: calc(100% - 45px);
   padding-left: 28px;
   
 	outline: 0;
+
   color: var(--text-color);
 	/* box-shadow: 0 0 0 1px rgba(56, 60, 79, 0.4); */
 }
@@ -225,10 +231,11 @@ export default {
 .account {
   width: 32px;
   height: 32px;
-	box-sizing: border-box;
+	
+  box-sizing: border-box;
 	border: solid 1px rgba(56, 60, 79, 0.3);
 	border-radius: 100%;
-
+  
   background-image: url('../../src/assets/user.svg');
   background-size: 18px;
   background-repeat: no-repeat;
@@ -237,24 +244,28 @@ export default {
 }
 
 .drawer-wrapper {
-  top: var(--nav-height);
-  height: 100%;
-  width: 100%;
   position: fixed;
-  z-index: 99;
+  top: var(--nav-height);
+
+  width: 100%;
+  height: 100%;
+  
   background: rgba(56, 60, 79, 0.7);
+  
+  z-index: 99;
 }
 
 .drawer {
+  position: absolute;
+  left: calc(50% - var(--content-max-width) / 2);
+  
   width: var(--content-max-width);
   padding-top: 15px;
 
-  position: absolute;
-  left: calc(50% - var(--content-max-width) / 2);
-  z-index: 99;
-
   background: var(--header-bg-color);
   box-shadow: 0 1px rgba(0, 0, 0, 0.11);
+  
+  z-index: 99;
 }
 @media screen and (min-width: 450px) {
   .drawer {
@@ -270,30 +281,32 @@ export default {
 }
 
 .results-drawer .results {
-  list-style: none;
   margin: 0;
   padding: 0;
+
+  list-style: none;
 }
 .results-drawer .result {
   width: var(--content-max-width);
   height: var(--result-height);
 }
 .results-drawer .result a {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
+
   width: var(--content-max-width);
   height: 100%;
   padding: 0 30px;
   box-sizing: border-box;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  
-  color: var(--text-color);
-  text-decoration: none;
   border-bottom: dotted 1px rgba(56, 60, 79, 0.7);
   border-radius: 10px;
+
+  color: var(--text-color);
+  text-decoration: none;
 }
 .results-drawer .result a:hover {
   background: rgba(0, 0, 0, 0.11);
@@ -307,59 +320,67 @@ export default {
   font-style: italic;
 }
 .results-drawer .result a .numbers {
-  position: absolute;
-  right: 30px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  position: absolute;
+  right: 30px;
+
   width: 120px;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
 }
 
 .account-drawer {
-  height: var(--account-drawer-height);
-  overflow: hidden;
   display: grid;
   grid-template-columns: var(--account-drawer-height) 1fr;
   grid-template-rows: 50px 1fr;
+
+  height: var(--account-drawer-height);
+  overflow: hidden;
 }
 
 .account-drawer .profilepic {
-  box-sizing: border-box;
-  width: calc(var(--account-drawer-height) - var(--account-drawer-profile-pic-padding)*2);
   justify-self: center;
   align-self: center;
-  border-radius: 40%;
   grid-row: 1 / 3;
   grid-column: 1;
 
+  width: calc(var(--account-drawer-height) - var(--account-drawer-profile-pic-padding)*2);
+  box-sizing: border-box;
+  
+  border-radius: 40%;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .account-drawer .name {
-  margin-top: calc(var(--account-drawer-profile-pic-padding) / 2);
   grid-row: 1;
   grid-column: 2;
+
+  margin-top: calc(var(--account-drawer-profile-pic-padding) / 2);
 }
 .account-drawer .links {
   grid-row: 2;
   grid-column: 2;
-  list-style: none;
+
   padding: 0;
   margin: 0;
+  
+  list-style: none;
 }
 .account-drawer .links a {
   text-decoration: none;
   color: inherit;
 }
 .account-drawer .links a.btn {
-  border: solid 1px black;
-  border-radius: 8px;
   padding: 6px 10px;
   margin: auto;
+  
+  border: solid 1px black;
+  border-radius: 8px;
 }
 
 .feedback {
@@ -373,35 +394,37 @@ export default {
 }
 
 .content {
-  box-sizing: border-box;
   position: relative;
-  background: var(--bg-color);
-  max-width: var(--content-max-width);
-  width: 100vw;
-  min-height: 65vh;
-  padding: 0 2em;
-  margin-top: 65px;
-  margin-bottom: 150px;
-  padding-bottom: 30px;
   z-index: 10;
+
+  width: var(--content-max-width);
+  min-height: 65vh;
+  padding: 32px;
+  padding-top: 0;
+  margin: var(--nav-height) 0 150px;
+  box-sizing: border-box;
+
+  background: var(--bg-color);
 }
 
 .footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   position: fixed;
   bottom: 0;
   left: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 20px;
-  width: 100%;
-  height: 150px;
-  padding-top: 300px; /* So it's still black beneath content if you over scroll */
-  z-index: 5;
-  background: var(--footer-bg);
-  color: var(--footer-text-color);
-  font-family: var(--footer-font);
 
+  padding: 20px;
+  width: 100vw;
+  height: 400px;
+
+  background: var(--footer-bg);
+
+  font-family: var(--footer-font);
   font-size: 0.9em;
+  color: var(--footer-text-color);
+  
+  z-index: 5;
 }
 
 .footer > .copyright {
@@ -411,10 +434,13 @@ export default {
 }
 
 .footer > .copyright > span {
-  border: solid 1px var(--footer-text-color);
-  line-height: 1.2;
   align-self: flex-start;
+  
   padding: 13px 10px;
+  
+  border: solid 1px var(--footer-text-color);
   border-radius: 10px;
+  
+  line-height: 1.2;
 }
 </style>
