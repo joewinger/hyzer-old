@@ -20,9 +20,9 @@ let webAuth = new auth0.WebAuth({
   domain: domain,
   clientID: clientId,
   redirectUri: `${siteUrl}`,
-  audience: `https://${domain}/api/v2/`,
+  audience: 'https://hyzer.us/api/v0', // https://hyzer.us/api/v2/
   responseType: 'token id_token',
-  scope: 'openid email profile'
+  scope: 'openid email profile create:reviews update:reviews'
 })
 
 let auth = new Vue({

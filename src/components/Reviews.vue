@@ -90,13 +90,13 @@ export default {
 			fetch('/api/v0/submitReview', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'Authorization': 'Bearer ' + localStorage.access_token
 				},
 				body: JSON.stringify({
 					disc: this.discId,
 					content: this.newReviewContent,
-					name: JSON.parse(localStorage.user).name,
-					user: JSON.parse(localStorage.user).sub
+					name: JSON.parse(localStorage.user).name
 				})
 			}).then(response => {
 				if(!response.ok) console.error(response);
@@ -110,7 +110,8 @@ export default {
 			fetch('/api/v0/updateReview', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'Authorization': 'Bearer ' + localStorage.access_token
 				},
 				body: JSON.stringify({
 					reviewId: this.myReview.id,

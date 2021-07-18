@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@gridsome/source-airtable": "^0.2.0",
+    "@serverless-jwt/jwt-verifier": "^0.2.1",
     "airtable": "^0.11.1",
     "auth0-js": "^9.13.2",
     "body-parser": "^1.19.0",
