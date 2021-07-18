@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
         return;
       }
       records.forEach((record) => {
-        console.log(`New Review (ID ${record.getId()}): "${record.fields.content}" by user ${claims.sub}`);
+        console.log(`New Review (ID ${record.getId()}): "${record.fields.content}" by user ${record.fields.name} (${claims.sub})`);
       });
       res.status(201).send('OK');
     });
