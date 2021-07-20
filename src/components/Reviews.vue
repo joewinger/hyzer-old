@@ -103,6 +103,8 @@ export default {
 				this.submittedLoading = false;
 				this.newReviewContent = '';
 				this.getReviews();
+			}).catch(e => {
+				console.error(`${e.type}: ${e.message}`);
 			});
 		},
 		updateReview: function() {
@@ -123,15 +125,22 @@ export default {
 				this.newReviewContent = '';
 				this.getReviews();
 				this.editMode = false;
-			});
+			}).catch(e => {
+				console.error(`${e.type}: ${e.message}`);
+			});;
 		},
 		getReviews: async function() {
-			let response = await fetch('/api/v0/getReviews?' + new URLSearchParams({ disc: this.discId }))
-			if(!response.ok) { console.error(response); return; }
-			
-			let reviews = await response.json();
-			this.allReviews = reviews;
-			this.$emit('update-review-count', reviews.length);
+			let response;
+			try {
+				 response = await fetch('/api/v0/getReviews?' + new URLSearchParams({ disc: this.discId }))
+				if(!response.ok) { console.error(response); return; }
+				
+				let reviews = await response.json();
+				this.allReviews = reviews;
+				this.$emit('update-review-count', reviews.length);
+			} catch (e) {
+				console.error(`${e.type}: ${e.message}`);
+			}
 		},
 		nextPage() {
 			if(this.currentPage < this.totalPages) this.currentPage++;
