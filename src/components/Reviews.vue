@@ -30,7 +30,7 @@
 				<button style="align-self: flex-end" @click="submitNewReview()">Submit Review</button>
 			</div>
 			<!-- If we're not logged in & there's no reviews -->
-			<p class="noreviews" v-if="allReviews.length === 0 && this.$auth.isAuthenticated() === false">Looks like there's nothing to see here... Try checking back later!</p>
+			<p class="noreviews" v-if="allReviews.length === 0 && this.$auth.isAuthenticated() === false">Looks like there's nothing to see here :( Check back later or <a href="" @click="$auth.login()">log in</a> to leave your own review!</p>
     </div>
 </template>
 
